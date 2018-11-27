@@ -58,17 +58,17 @@ public class MinimizeBandwidth {
        }
     }
     public static int  computeBandwidth(int[][] matrix, int n,int minCost,int a, int b,int[] verticeArr,int lowerBound,int[] minVerticeArr){
-        //if (a==b) return minCost;
+
         if (minCost==lowerBound)/* the LOWER BOUND on the bandwidth of a graph is equal to the highest degree vertice over 2.
             This is because the max degree vertice would have to have, at best half that many nodes to go to in each direction.
             */
             return minCost;
-          //  System.exit(0);
+
       
         int cost=0;
         boolean toBreak=false;
         /*Loop to determine the bandwidth of this permutation*/
-       if (verticeArr[0]<verticeArr[n-1])
+       if (verticeArr[0]<verticeArr[n-1]) //By symmetry, we can skip permutations where the first is less than the last
         for (int i=0; i<n-1; i++){
             for (int j=n-1; j>i; j--){
                 if (connected(matrix,verticeArr[i],verticeArr[j])){
